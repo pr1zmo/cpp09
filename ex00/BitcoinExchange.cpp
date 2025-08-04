@@ -26,7 +26,7 @@ void findClosestDate(std::map<std::string, double>bitcoin, std::string line){
 	std::cout << line << std::endl;
 }
 
-void BitcoinExchange::listPrices(std::map<std::string, double>bitcoinMap, std::map<std::string, std::string>){
+void BitcoinExchange::listPrices(std::map<std::string, double>&bitcoinMap, std::map<std::string, std::string>&inputList){
 	// std::map<std::string, double> bitcoin;
 	// std::map<std::string, std::string> inputLine;
 
@@ -47,21 +47,30 @@ void BitcoinExchange::listPrices(std::map<std::string, double>bitcoinMap, std::m
 	// }
 }
 
-int BitcoinExchange::checkFiles(std::ifstream& dataSet, const std::string& inputTxt){
+int BitcoinExchange::checkFiles(const std::string& dbFile, const std::string& inputTxt){
+	// dbFile.open("test/data.csv");
+	// inputTxt.open(std::string("test/") + av[1]);
 	return 1;
 }
 
 std::map<std::string, double> setBitcoin(std::ifstream& dataSet){
+	//
+	std::map<std::string, double> rv;
+	//
+	return rv;
+}
 
+std::map<std::string, std::string> setInput(std::ifstream& inputData){
+	std::map<std::string, std::string> rv;
+	//
+	return rv;
 }
 
 int BitcoinExchange::parseLine(std::string line){
 	std::map<std::string, double> bitcoinMap; // needs to be *std::map<std::string, std::string>bitcoinMap to hold an entire line.
-	std::map<std::string, std::string> intputMap;
-	if (checkFiles(this->_dataSet, this->_inputTxt))
-	{
-		bitcoinMap = setBitcoin(this->_dataSet);
-		inputMap = setInput(this->_inputTxt);
-		listPrices(bitcoinMap, inputMap);
-	}
+	std::map<std::string, std::string> inputMap;
+	bitcoinMap = setBitcoin(this->_dataSet);
+	inputMap = setInput(this->_inputData);
+	listPrices(bitcoinMap, inputMap);
+	return (0);
 }

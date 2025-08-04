@@ -7,12 +7,13 @@
 #include <cstdlib>
 #include <cstdio>
 #include <fstream>
+#include <exception>
 #include <map>
 
 class BitcoinExchange {
 	private:
 		std::ifstream _dataSet;
-		std::string _inputTxt;
+		std::ifstream _inputData;
 	public:
 		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange& other);
@@ -21,8 +22,8 @@ class BitcoinExchange {
 
 		int parseLine(std::string line);
 		// int parseTxtFile(std::ofstream file);
-		void listPrices(std::ifstream &dataSet, std::string const &inputTxt);
-		int checkFiles(std::ifstream &dataSet, const std::string &inputTxt);
+		void listPrices(std::map<std::string, double>&bitcoinMap, std::map<std::string, std::string>&inputList);
+		int checkFiles(const std::string& dbFile, const std::string &inputTxt);
 };
 
 #endif

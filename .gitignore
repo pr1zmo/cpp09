@@ -44,3 +44,9 @@ en.subject.pdf
 mapTest.cpp
 test.cpp
 .vscode
+convertToCsv.py
+
+btc
+test/
+
+*.tldr
