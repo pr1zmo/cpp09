@@ -9,6 +9,7 @@
 #include <fstream>
 #include <exception>
 #include <map>
+#include <limits>
 
 class BitcoinExchange {
 	private:
@@ -22,8 +23,10 @@ class BitcoinExchange {
 
 		int parseLine(std::string line);
 		// int parseTxtFile(std::ofstream file);
-		void listPrices(std::map<std::string, double>&bitcoinMap, std::map<std::string, std::string>&inputList);
+		void listPrices(std::map<std::string, float>&bitcoinMap, std::map<std::string, std::string>&inputList);
 		int checkFiles(const std::string& dbFile, const std::string &inputTxt);
+		int checkLimits(float rit, float it);
+		void exchange(std::ifstream &data, const std::string &inputTxt);
 };
 
 #endif
