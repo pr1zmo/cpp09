@@ -1,7 +1,7 @@
 NAME = btc
 CC = c++
-CFLAGS = #-Wall -Wextra -Werror -std=c++98 #-fsanitize=address
-SRCS = $(wildcard *.cpp)
+CFLAGS = #-std=c++98 -Wall -Wextra -Werror -fsanitize=address
+SRCS = BitcoinExchange.cpp main.cpp
 RM = rm -f
 
 all: $(NAME)

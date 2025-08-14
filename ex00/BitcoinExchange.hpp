@@ -1,5 +1,5 @@
-#ifndef BitcoinExchange_HPP
-#define BitcoinExchange_HPP
+#ifndef Bitcoin_HPP
+#define Bitcoin_HPP
 
 #include <sstream>
 #include <string>
@@ -7,26 +7,29 @@
 #include <cstdlib>
 #include <cstdio>
 #include <fstream>
+// #include <regex>
 #include <exception>
 #include <map>
 #include <limits>
 
-class BitcoinExchange {
+class Bitcoin {
 	private:
-		std::ifstream _dataSet;
-		std::ifstream _inputData;
-	public:
-		BitcoinExchange();
-		BitcoinExchange(const BitcoinExchange& other);
-		BitcoinExchange& operator=(const BitcoinExchange& other);
-		~BitcoinExchange();
+		std::map<std::string, float> _btc;
+		std::string _inputFile;
+		std::ifstream _data;
+		Bitcoin();
 
-		int parseLine(std::string line);
-		// int parseTxtFile(std::ofstream file);
-		void listPrices(std::map<std::string, float>&bitcoinMap, std::map<std::string, std::string>&inputList);
-		int checkFiles(const std::string& dbFile, const std::string &inputTxt);
-		int checkLimits(float rit, float it);
-		void exchange(std::ifstream &data, const std::string &inputTxt);
+	public:
+		Bitcoin(std::string &argv);
+		Bitcoin(const Bitcoin& other);
+		Bitcoin& operator=(const Bitcoin& other);
+		~Bitcoin();
+
+		bool checkFiles(const std::string &argv);
+		void fillMap(std::map<std::string, float> &map, std::ifstream &infile);
+		void exchange();
+		bool checkInput(const std::string& line);
+		void displayRate(const std::string& line, std::map<std::string, float> &btc);
 };
 
 #endif

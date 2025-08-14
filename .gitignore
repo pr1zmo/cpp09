@@ -45,7 +45,7 @@ mapTest.cpp
 test.cpp
 .vscode
 convertToCsv.py
-
+*.txt
 btc
 test/
 
