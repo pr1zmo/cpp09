@@ -10,6 +10,7 @@
 #include <exception>
 #include <map>
 #include <limits>
+#include <cctype>
 
 class BitcoinExchange {
 	private:
@@ -21,12 +22,10 @@ class BitcoinExchange {
 		BitcoinExchange& operator=(const BitcoinExchange& other);
 		~BitcoinExchange();
 
-		int parseLine(std::string line);
-		// int parseTxtFile(std::ofstream file);
-		void listPrices(std::map<std::string, float>&bitcoinMap, std::map<std::string, std::string>&inputList);
-		int checkFiles(const std::string& dbFile, const std::string &inputTxt);
 		int checkLimits(float rit, float it);
-		void exchange(std::ifstream &data, const std::string &inputTxt);
+		bool checkInput(const std::string& line);
+		void fillMap(std::map<std::string, float> &map, std::ifstream &infile);
+		void exchange(std::ifstream &infile, const std::string &inputFile);
 };
 
 #endif

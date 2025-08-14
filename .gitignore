@@ -46,7 +46,11 @@ test.cpp
 .vscode
 convertToCsv.py
 
+RPN
+PmergeMe
 btc
+
 test/
 
 *.tldr
+*.txt

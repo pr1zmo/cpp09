@@ -23,25 +23,45 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
 PmergeMe::~PmergeMe() {
 }
 
+std::string PmergeMe::mergeSortDeq(std::deque<int> deque){
+	//
+	return "";
+}
+
+std::string PmergeMe::mergeSortVec(std::vector<int> vector){
+	std::vector<int> res;
+
+	// res = sort(vector);
+	return "";
+}
+
 void PmergeMe::loadData(){
 	int c;
 	for (int i = 1; this->_sequence[i]; i++){
-		c = stof(this->_sequence[i], 0);
+		c = std::atoi(this->_sequence[i]);
 		this->_deqSeq.push_back(c);
 		this->_vecSeq.push_back(c);
 	}
 
-	// Display the content of the vector
-	std::cout << "Vector content: ";
+	std::cout << "Before: ";
 	for (std::vector<int>::const_iterator it = _vecSeq.begin(); it != _vecSeq.end(); ++it) {
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
 
-	// Display the content of the deque
+	mergeSortVec(this->_vecSeq);
+	mergeSortDeq(this->_deqSeq);
+	// Display the content of the vector
+	std::cout << "After: ";
+	for (std::vector<int>::const_iterator it = _vecSeq.begin(); it != _vecSeq.end(); ++it) {
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+
+/* 		// Display the content of the deque
 	std::cout << "Deque content: ";
 	for (std::deque<int>::const_iterator it = _deqSeq.begin(); it != _deqSeq.end(); ++it) {
 		std::cout << *it << " ";
 	}
-	std::cout << std::endl;
+	std::cout << std::endl; */
 }
