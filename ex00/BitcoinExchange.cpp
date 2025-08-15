@@ -111,114 +111,16 @@ bool Bitcoin::checkInput(const std::string& line) {
 	return true;
 }
 
-/* #include <iostream>
-#include <string>
-#include <cctype>
-#include <cstdlib>
-
-bool Bitcoin::checkInput(const std::string& line) {
-	// if (line.size() < 14) {
-	// 	std::cerr << "Error: line too short (size " << line.size() << ")\n";
-	// 	return false;
-	// }
-	// YYYY-MM-DD | VALUE
-	for (int i = 0; i < 4; ++i) {
-		if (!std::isdigit(line[i])) {
-			std::cerr << "Error: expected digit at index[" << i << "] ('" << line[i] << "')\n";
-			return false;
-		}
-	}
-	if (line[4] != '-') {
-		std::cerr << "Error: expected '-' at index[4] ('" << line[4] << "')\n";
-		return false;
-	}
-	if (!std::isdigit(line[5])) {
-		std::cerr << "Error: expected digit at index[5] ('" << line[5] << "')\n";
-		return false;
-	}
-	if (!std::isdigit(line[6])) {
-		std::cerr << "Error: expected digit at index[6] ('" << line[6] << "')\n";
-		return false;
-	}
-	if (line[7] != '-') {
-		std::cerr << "Error: expected '-' at index[7] ('" << line[7] << "')\n";
-		return false;
-	}
-	if (!std::isdigit(line[8])) {
-		std::cerr << "Error: expected digit at index[8] ('" << line[8] << "')\n";
-		return false;
-	}
-	if (!std::isdigit(line[9])) {
-		std::cerr << "Error: expected digit at index[9] ('" << line[9] << "')\n";
-		return false;
-	}
-	if (line[10] != ' ' || line[11] != '|' || line[12] != ' ') {
-		std::cerr << "Error: expected ' | ' at indices[10..12] ('" 
-					<< line.substr(10,3) << "')\n";
-		return false;
-	}
-	// parse date
-	int year  = std::atoi(std::string(line, 0, 4).c_str());
-	int month = std::atoi(std::string(line, 5, 2).c_str());
-	int day   = std::atoi(std::string(line, 8, 2).c_str());
-	if (month < 1 || month > 12) {
-		std::cerr << "Error: month out of range at indices[5..6] (" << month << ")\n";
-		return false;
-	}
-	int dim[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
-	bool leap = (year%4 == 0 && (year%100 != 0 || year%400 == 0));
-	if (leap) dim[1] = 29;
-	if (day < 1 || day > dim[month-1]) {
-		std::cerr << "Error: day out of range at indices[8..9] (" << day << ")\n";
-		return false;
-	}
-	// parse numeric value
-	const std::string value = line.substr(13);
-	if (value.empty()) {
-		std::cerr << "Error: missing numeric value after index[13]\n";
-		return false;
-	}
-	bool seenDot = false;
-	for (size_t i = 0; i < value.size(); ++i) {
-		char c = value[i];
-		if (i == 0 && c == '-') {
-			if (value.size() == 1) {
-					std::cerr << "Error: lone '-' at value index[" << 13+i << "]\n";
-					return false;
-			}
-			continue;
-		}
-		if (c == '.') {
-			if (seenDot) {
-					std::cerr << "Error: multiple '.' at value index[" << 13+i << "]\n";
-					return false;
-			}
-			seenDot = true;
-			if (i+1 == value.size()) {
-					std::cerr << "Error: trailing '.' at value index[" << 13+i << "]\n";
-					return false;
-			}
-			continue;
-		}
-		if (!std::isdigit(c)) {
-			std::cerr << "Error: invalid character '" << c << "' at value index[" << 13+i << "]\n";
-			return false;
-		}
-	}
-	return true;
-}
- */
-
 void Bitcoin::displayRate(const std::string& line, std::map<std::string, float> &btc){
 	std::map<std::string, float>::reverse_iterator it;
 	for (it=btc.rbegin(); it!=btc.rend(); it++){
 		if (it->first <= line)
-			{
-				std::cout << line.substr(0, 10) << " => ";
-				std::cout << std::atof(line.substr(13).c_str()) << " = ";
-				std::cout << it->second * std::atof(line.substr(13).c_str()) << std::endl;
-				break;
-			}
+		{
+			std::cout << line.substr(0, 10) << " => ";
+			std::cout << std::atof(line.substr(13).c_str()) << " = ";
+			std::cout << it->second * std::atof(line.substr(13).c_str()) << std::endl;
+			break;
+		}
 	}
 }
 
