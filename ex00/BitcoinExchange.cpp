@@ -22,7 +22,7 @@ Bitcoin::~Bitcoin() {
 bool Bitcoin::checkFiles(const std::string &argv){
 	std::ifstream inputFile;
 
-	this->_data.open("data.csv");
+	this->_data.open("test/data.csv");
 	if (!this->_data.is_open() || this->_data.eof())
 		return (std::cerr << "error with data.csv\n", 1);	
 	
@@ -65,7 +65,7 @@ void Bitcoin::fillMap(std::map<std::string, float> &map, std::ifstream &infile){
 	infile.close();
 }
 
-/* bool Bitcoin::checkInput(const std::string& line) {
+bool Bitcoin::checkInput(const std::string& line) {
 	if (line.size() < 14) return false;
 	// YYYY-MM-DD | VALUE
 	for (int i = 0; i < 4; ++i)
@@ -109,18 +109,18 @@ void Bitcoin::fillMap(std::map<std::string, float> &map, std::ifstream &infile){
 		if (!std::isdigit(c)) return false;
 	}
 	return true;
-} */
+}
 
-#include <iostream>
+/* #include <iostream>
 #include <string>
 #include <cctype>
 #include <cstdlib>
 
 bool Bitcoin::checkInput(const std::string& line) {
-	if (line.size() < 14) {
-		std::cerr << "Error: line too short (size " << line.size() << ")\n";
-		return false;
-	}
+	// if (line.size() < 14) {
+	// 	std::cerr << "Error: line too short (size " << line.size() << ")\n";
+	// 	return false;
+	// }
 	// YYYY-MM-DD | VALUE
 	for (int i = 0; i < 4; ++i) {
 		if (!std::isdigit(line[i])) {
@@ -207,6 +207,7 @@ bool Bitcoin::checkInput(const std::string& line) {
 	}
 	return true;
 }
+ */
 
 void Bitcoin::displayRate(const std::string& line, std::map<std::string, float> &btc){
 	std::map<std::string, float>::reverse_iterator it;
