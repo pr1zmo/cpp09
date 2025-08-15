@@ -1,13 +1,14 @@
 #include "PmergeMe.hpp"
 
-int main(int ac, const char **av){
-	if (ac < 3) {
-		std::cerr << "Usage: " << av[0] << " <numbers...>" << std::endl;
+
+// Example timing in main
+int main(int argc, const char** argv) {
+	if (argc < 2) {
+		std::cerr << "Usage: " << argv[0] << " <sequence of integers>" << std::endl;
 		return 1;
 	}
+	PmergeMe vec(argv);
 
-	PmergeMe arr(av);
-
-	arr.loadData();
-	return (0);
+	vec.appMain();
+	return 0;
 }

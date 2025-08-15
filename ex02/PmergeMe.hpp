@@ -6,6 +6,10 @@
 #include <deque>
 #include <string>
 #include <cstdlib>
+#include <sys/time.h>
+#include <algorithm>
+#include <iomanip>
+#include <limits>
 
 class PmergeMe {
 	private:
@@ -18,9 +22,19 @@ class PmergeMe {
 		PmergeMe(const PmergeMe& other);
 		PmergeMe& operator=(const PmergeMe& other);
 		~PmergeMe();
-		void loadData();
-		std::string mergeSortVec(std::vector<int> vec);
-		std::string mergeSortDeq(std::deque<int> deq);
+		void appMain();
+		bool parseInput(const char** seq);
+		void FordJohnson(std::vector<int>& vec);
+		void FordJohnson(std::deque<int>& deq);
+		void insertionSort(std::vector<int>& vec);
+		void insertionSort(std::deque<int>& deq);
+		void merge(std::deque<int> &L, std::deque<int> &R, std::deque<int> &deq);
+		void merge(std::vector<int> &L, std::vector<int> &R, std::vector<int> &vec);
+		size_t getTime();
+		void showSeq(const std::string& type, double time);
 };
+
+// template <typename C>
+// std::ostream& operator<<(std::ostream& o, C container);
 
 #endif

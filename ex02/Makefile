@@ -1,6 +1,6 @@
 NAME = PmergeMe
 CC = c++
-CFLAGS = -std=c++98 # -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address
 SRCS = $(wildcard *.cpp)
 RM = rm -f
 
