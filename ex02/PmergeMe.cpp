@@ -23,18 +23,6 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
 PmergeMe::~PmergeMe() {
 }
 
-// template <typename C>
-// std::ostream& operator<<(std::ostream& o, C container){
-// 	for (u_int32_t i = 0; i < 5; i++)
-// 	{
-// 		if (i < container.size())
-// 			o << " " << container.at(i);
-// 	}
-// 	if (container.size() > 5)
-// 		o << " [...]";
-// 	return o;
-// }
-
 void PmergeMe::insertionSort(std::vector<int> &vec) {
 	for (int i = 0; i < (int)vec.size() - 1; i++){
 		int z = i;
@@ -142,28 +130,16 @@ bool badNum(const char* c){
 
 bool PmergeMe::parseInput(const char** seq){
 	for (int i = 1; seq[i]; i++){
-		// std::cout << "[DEBUG] Checking argument: \"" << seq[i] << "\"" << std::endl;
-
 		if (!isNum(seq[i])) {
-			// std::cout << "[ERROR] Non-numeric value found: \"" << seq[i] << "\"" << std::endl;
 			return false;
 		}
-
-		if (badNum(seq[i])) { // this should be true only if number is out of bounds
-			// std::cout << "[ERROR] Number out of range (negative or too large): " << seq[i] << std::endl;
+		if (badNum(seq[i])) {
 			return false;
 		}
-
 		int value = std::atoi(seq[i]);
-		// std::cout << "[DEBUG] Parsed integer: " << value << std::endl;
-
 		this->_vecSeq.push_back(value);
 		this->_deqSeq.push_back(value);
-
-		// std::cout << "[DEBUG] Added to _vecSeq and _deqSeq." << std::endl;
 	}
-
-	// std::cout << "[DEBUG] All arguments processed successfully." << std::endl;
 	return true;
 }
 
@@ -176,9 +152,8 @@ void PmergeMe::showSeq(const std::string& type, double time) {
 
 void beforeAfter(std::vector<int> &vec, size_t size){
 	for (int i = 0; i < (int)vec.size(); i++){
-		if (i == (int)size){
+		if (i == (int)size)
 			break;
-		}
 		std::cout << vec[i] << " ";
 	}
 	if (size < vec.size())
